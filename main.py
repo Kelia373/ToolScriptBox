@@ -17,6 +17,7 @@
 import sys
 import os
 import platform
+from os.path import abspath
 
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -89,9 +90,14 @@ class MainWindow(QMainWindow):
 
         # SET CUSTOM THEME
         # ///////////////////////////////////////////////////////////////
+        if getattr(sys, 'frozen', False):
+            absPath = os.path.dirname(os.path.abspath(sys.executable))
+        elif __file__:
+            absPath = os.path.abspath(os.path.dirname(__file__))
         useCustomTheme = False
-        themeFile = "themes\py_dracula_light.qss"
-
+        self.useCustomTheme = useCustomTheme
+        self.absPath = absPath
+        themeFile = os.path.abspath(os.path.join(absPath, "themes\py_dracula_light.qss"))
         # SET THEME AND HACKS
         if useCustomTheme:
             # LOAD AND APPLY STYLE
