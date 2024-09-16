@@ -45,8 +45,8 @@ class MainWindow(QMainWindow):
 
         # APP NAME
         # ///////////////////////////////////////////////////////////////
-        title = "PyDracula - Modern GUI"
-        description = "PyDracula APP - Theme with colors based on Dracula for Python."
+        title = "ScriptTool"
+        description = "ScriptTool"
         # APPLY TEXTS
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
@@ -133,8 +133,8 @@ class MainWindow(QMainWindow):
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
 
         if btnName == "btn_save":
-            print("Save BTN clicked!")
-
+            # print("Save BTN clicked!")
+            QMessageBox.information(self, "Error Occury", "TODO:开发中", QMessageBox.Yes)
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
 
