@@ -74,6 +74,8 @@ class MainWindow(QMainWindow):
         widgets.btn_save.clicked.connect(self.buttonClick)
         # 主题切换
         widgets.btn_message.clicked.connect(self.buttonClick)
+        # Computer监控
+        widgets.btn_computer.clicked.connect(self.buttonClick)
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -156,6 +158,11 @@ class MainWindow(QMainWindow):
                 UIFunctions.theme(self, self.themeFile, True)
                 AppFunctions.setThemeHack(self)
                 self.useCustomTheme = False
+
+        if btnName == "btn_computer":
+            widgets.stackedWidget.setCurrentWidget(widgets.computerInfo)
+            UIFunctions.resetStyle(self, btnName)
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
