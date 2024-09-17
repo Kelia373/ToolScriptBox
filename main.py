@@ -72,6 +72,8 @@ class MainWindow(QMainWindow):
         widgets.btn_widgets.clicked.connect(self.buttonClick)
         widgets.btn_new.clicked.connect(self.buttonClick)
         widgets.btn_save.clicked.connect(self.buttonClick)
+        # 主题切换
+        widgets.btn_message.clicked.connect(self.buttonClick)
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -142,6 +144,19 @@ class MainWindow(QMainWindow):
         if btnName == "btn_save":
             # print("Save BTN clicked!")
             QMessageBox.information(self, "Error Occury", "TODO:开发中", QMessageBox.Yes)
+
+        if btnName == "btn_message":
+            if self.useCustomTheme == False:
+                self.themeFile = os.path.abspath(os.path.join(self.absPath, "themes\py_dracula_light.qss"))
+                UIFunctions.theme(self, self.themeFile, True)
+                AppFunctions.setThemeHack(self)
+                self.useCustomTheme = True
+            else:
+                self.themeFile = os.path.abspath(os.path.join(self.absPath, "themes\py_dracula_dark.qss"))
+                UIFunctions.theme(self, self.themeFile, True)
+                AppFunctions.setThemeHack(self)
+                self.useCustomTheme = False
+
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
 
