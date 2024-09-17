@@ -90,6 +90,7 @@ class MainWindow(QMainWindow):
 
         # SET CUSTOM THEME
         # ///////////////////////////////////////////////////////////////
+        # 路径冻结，防止打包成exe后路径错乱
         if getattr(sys, 'frozen', False):
             absPath = os.path.dirname(os.path.abspath(sys.executable))
         elif __file__:
